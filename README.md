@@ -1,13 +1,9 @@
-# NETWORK-REACHABILITY-CHECKER(1) User Manual
-
-## NAME
-network-reachability-checker - check reachability of domains and IP addresses/ranges/CIDRs
 
 ## SYNOPSIS
-**network-reachability-checker** [*OPTIONS*] {**--domain-file** *FILE* | **--ip** *SPEC* | **--ip-file** *FILE*} *OUTPUT_FILE*
+**revlister.py** [*OPTIONS*] {**--domain-file** *FILE* | **--ip** *SPEC* | **--ip-file** *FILE*} *OUTPUT_FILE*
 
 ## DESCRIPTION
-**network-reachability-checker** is a comprehensive utility for testing the reachability of network targets including domain names, individual IP addresses, IP ranges, and CIDR blocks. The tool supports multiple testing methods, concurrent processing for high performance, and detailed reporting.
+**revlister.py** is a comprehensive utility for testing the reachability of network targets including domain names, individual IP addresses, IP ranges, and CIDR blocks. The tool supports multiple testing methods, concurrent processing for high performance, and detailed reporting.
 
 The tool can perform DNS resolution checks for domains, reverse DNS lookups, ICMP ping tests, and port scanning to determine if network targets are reachable.
 
@@ -133,31 +129,31 @@ github.com,True,dns,0.156,
 ### Basic Domain Checking
 ```bash
 # Check domains from file using DNS
-network-reachability-checker --domain-file domains.txt reachable_domains.txt
+revlister.py --domain-file domains.txt reachable_domains.txt
 ```
 
 ### IP Range Testing with Ping
 ```bash
 # Check local network range using ping
-network-reachability-checker --ip 192.168.1.1-50 --method ping --timeout 2 local_hosts.txt
+revlister.py --ip 192.168.1.1-50 --method ping --timeout 2 local_hosts.txt
 ```
 
 ### Comprehensive Testing
 ```bash
 # Test CIDR block with all methods and full metadata
-network-reachability-checker --ip 10.0.0.0/24 --method all --metadata --workers 100 comprehensive_results.csv
+revlister.py --ip 10.0.0.0/24 --method all --metadata --workers 100 comprehensive_results.csv
 ```
 
 ### High-Performance Processing
 ```bash
 # Process large IP file with optimized settings
-network-reachability-checker --ip-file large_ip_list.txt --workers 150 --timeout 3 --only-reachable results.txt
+revlister.py --ip-file large_ip_list.txt --workers 150 --timeout 3 --only-reachable results.txt
 ```
 
 ### Verbose Domain Checking
 ```bash
 # Check domains with detailed logging
-network-reachability-checker --domain-file domains.txt --verbose --metadata --retries 3 detailed_results.csv
+revlister.py --domain-file domains.txt --verbose --metadata --retries 3 detailed_results.csv
 ```
 
 ## PERFORMANCE CONSIDERATIONS
@@ -278,11 +274,11 @@ Network Reachability Checker 2.0
 ### System-wide Installation
 ```bash
 # Make executable and install
-chmod +x network-reachability-checker
-sudo cp network-reachability-checker /usr/local/bin/
+chmod +x revlister.py
+sudo cp revlister.py /usr/local/bin/
 
 # Install man page
-sudo cp network-reachability-checker.1 /usr/local/share/man/man1/
+sudo cp revlister.py.1 /usr/local/share/man/man1/
 sudo mandb
 ```
 
@@ -300,23 +296,23 @@ ping -n 1 google.com  # Windows
 ### Network Discovery
 ```bash
 # Discover active hosts in local network
-network-reachability-checker --ip 192.168.1.0/24 --method ping --only-reachable active_hosts.txt
+revlister.py --ip 192.168.1.0/24 --method ping --only-reachable active_hosts.txt
 ```
 
 ### Domain Validation
 ```bash
 # Validate list of company domains
-network-reachability-checker --domain-file company_domains.txt --metadata validation_results.csv
+revlister.py --domain-file company_domains.txt --metadata validation_results.csv
 ```
 
 ### Security Scanning
 ```bash
 # Port scan specific range with detailed output
-network-reachability-checker --ip 10.0.1.1-100 --method port --metadata --verbose scan_results.csv
+revlister.py --ip 10.0.1.1-100 --method port --metadata --verbose scan_results.csv
 ```
 
 ### Bulk DNS Resolution
 ```bash
 # Resolve large list of domains to IPs
-network-reachability-checker --domain-file massive_domain_list.txt --workers 200 --only-reachable resolved_domains.txt
+revlister.py --domain-file massive_domain_list.txt --workers 200 --only-reachable resolved_domains.txt
 ```
